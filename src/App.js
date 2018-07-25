@@ -26,12 +26,12 @@ class SideNav extends Component {
     return (
       <div className="SideNav">
         <ul id="slide-out" class="sidenav left-align">
-          <li><a href="#!">Home</a></li>
+          <li><a href="#!" onClick= {(page) => this.props.onClick(HomePage)}>Home</a></li>
           <li><a href="#!">Second Sidebar Link</a></li>
           <li class="no-padding">
             <ul class="collapsible collapsible-accordion">
               <li>
-                <a class="collapsible-header">Dropdown<i class="material-icons">add</i></a>
+                <a class="collapsible-header">Dropdown<i class="material-icons right">add</i></a>
                 <div class="collapsible-body">
                   <ul>
                     <li><a onClick= {(page) => this.props.onClick(ColorPage)}>First</a></li>
@@ -44,7 +44,7 @@ class SideNav extends Component {
             </ul>
           </li>
         </ul>
-        <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
+        <a href="#" data-target="slide-out" class="sidenav-trigger left"><i class="material-icons medium orange-text">keyboard_arrow_right</i></a>
       </div>
     );
   }
@@ -52,15 +52,40 @@ class SideNav extends Component {
 
 class HomePage extends Component {
   render() {
+    const speedBetweenLetters = 50;
+    const animationDuration = 1000; //really specified on the HTML elements
+    const offset = 400;
+    var delay = Array(17).fill(null);
+    for(var i = 0; i < 16; i++) {
+      delay[i] = {animationDelay: speedBetweenLetters*i + "ms"};
+    }
+    delay[16] = {animationDelay: (speedBetweenLetters*16 + animationDuration + offset) + "ms"}
     return (
       <div className="HomePage">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div class="row">
+          <header className="App-header">
+            <div class = "App-title-container animated tada valign-wrapper hide-on-small-only" style = {delay[16]}>
+              <div class="App-title-sub-container">
+                <h1 class="App-title animated bounceInDown" style = {delay[0]} >N</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[1]} >a</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[2]} >t</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[3]} >h</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[4]} >a</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[5]} >n</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[6]} >i</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[7]} >e</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[8]} >l</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[9]} >&nbsp;D</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[10]} >i</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[11]} >a</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[12]} >m</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[13]} >o</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[14]} >n</h1>
+                <h1 class="App-title animated bounceInDown" style = {delay[15]} >d</h1>
+              </div>
+            </div>
+          </header>
+        </div>
       </div>
     );
   }
